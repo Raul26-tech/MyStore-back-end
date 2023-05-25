@@ -1,26 +1,26 @@
 import { Router } from "express";
-import { User } from "../model/user";
+import { UserRepository } from "../repositories/UserRepository";
 
 const createUserRoutes = Router();
-
-const users: User[] = [];
+const userRepository = new UserRepository();
 
 createUserRoutes.post("/", (request, response) => {
   const { name, email, password, address } = request.body;
 
-  const userData: User = new User();
-
-  Object.assign(userData, {
-    created_at: new Date(),
+  userRepository.create({
     name,
     email,
     password,
     address,
   });
 
-  users.push(userData);
+  return response.status(201).send();
+});
 
-  return response.status(201).json(users);
+createUserRoutes.get("/", (request, response) => {
+  const all = userRepository.listUsers();
+
+  return response.json(all);
 });
 
 export { createUserRoutes };
