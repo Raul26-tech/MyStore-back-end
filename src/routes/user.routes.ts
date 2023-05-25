@@ -7,6 +7,12 @@ const userRepository = new UserRepository();
 createUserRoutes.post("/", (request, response) => {
   const { name, email, password, address } = request.body;
 
+  const userAlreadyExist = userRepository.findByName(name);
+
+  if (userAlreadyExist) {
+    return response.status(400).json({ error: "Usuário já existente!" });
+  }
+
   userRepository.create({
     name,
     email,

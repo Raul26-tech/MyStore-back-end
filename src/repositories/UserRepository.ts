@@ -37,6 +37,11 @@ class UserRepository {
   listUsers(): User[] {
     return this.users;
   }
+
+  findByName(name: string): User {
+    const user = this.users.find((userExist) => userExist.name === name);
+    return user;
+  }
 }
 
 export { UserRepository };
