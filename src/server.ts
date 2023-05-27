@@ -1,5 +1,6 @@
 import express from "express";
 import { createUserRoutes } from "./routes/user.routes";
+import { createProductsRoutes } from "./routes/products.routes";
 
 const app = express();
 
@@ -9,10 +10,15 @@ app.use(express.json());
 
 app.listen(port);
 
-app.use("/create-user", createUserRoutes);
-
 console.log(
   `\n\n\n| WELCOME TO E-COMMERCE, SERVER IS RUNNING ON PORT ${port} |\n\n\n`
 );
 
-//ROTA PARA CRIAÇÂO DE USUÁRIO
+// ROTA PARA CRIAÇÂO DE USUÁRIO
+app.use("/create-user", createUserRoutes);
+
+// ROTA PARA A CRIAÇÂO DO PRODUTO
+app.use("/products", createProductsRoutes);
+
+// LISTANDO PRODUTOS
+app.use("/products", createProductsRoutes);
