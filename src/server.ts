@@ -21,7 +21,7 @@ app.use("/create-user", createUserRoutes);
 app.use("/users", createUserRoutes);
 
 // ROTA PARA A CRIAÇÂO DO PRODUTO
-app.use("/products", createProductsRoutes);
+app.use("/create-products", createProductsRoutes);
 
 // LISTANDO PRODUTOS
 app.use("/products", createProductsRoutes);

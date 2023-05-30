@@ -1,8 +1,8 @@
 import { Product } from "../model/product";
+import { v4 as uuidv4 } from "uuid";
 
 interface ICreateProductDTO {
   id: string;
-  created_at: string;
   name: string;
   description?: string;
   price: number;
@@ -20,6 +20,7 @@ class ProductRepository {
     const product = new Product();
 
     Object.assign(product, {
+      id: uuidv4(),
       created_at: new Date(),
       name,
       avaliation,

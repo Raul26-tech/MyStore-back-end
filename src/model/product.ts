@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 class Product {
   id?: string;
-  created_at: string;
+  created_at?: string;
   name: string;
   description: string;
   price: number;

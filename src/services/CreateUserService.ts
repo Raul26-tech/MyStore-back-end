@@ -1,5 +1,4 @@
 import { UserRepository } from "../repositories/UserRepository";
-import { v4 as uuidv4 } from "uuid";
 
 interface ICreateUser {
   id?: string;
