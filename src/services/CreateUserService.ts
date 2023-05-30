@@ -1,7 +1,8 @@
+import { UserRepository } from "../repositories/UserRepository";
 import { v4 as uuidv4 } from "uuid";
 
-interface ICreateUserDTO {
-  id: string;
+interface ICreateUser {
+  id?: string;
   name: string;
   email: string;
   password: string;
@@ -15,9 +16,17 @@ interface ICreateUserDTO {
 }
 
 class CreateUserService {
-  create({ name, email, password, address }: ICreateUserDTO) {
-    console.log(name, email, password);
+  constructor(private userRepository: UserRepository) {}
+
+  execute({ id, name, address, email, password }: ICreateUser): void {
+    const userAlreadyExists = this.userRepository.findByName(name);
+
+    if (userAlreadyExists) {
+      throw new Error("User already exists!");
+    }
+
+    this.userRepository.create({ id, name, password, email, address });
   }
 }
 
-export default new CreateUserService();
+export { CreateUserService };

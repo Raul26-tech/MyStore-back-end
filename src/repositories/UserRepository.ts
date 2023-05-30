@@ -1,7 +1,8 @@
 import { User } from "../model/user";
+import { v4 as uuidv4 } from "uuid";
 
 interface ICreateUserDTO {
-  id?: string;
+  id: string;
   name: string;
   email: string;
   password: string;
@@ -25,6 +26,7 @@ class UserRepository {
     const userData: User = new User();
 
     Object.assign(userData, {
+      id: uuidv4(),
       created_at: new Date(),
       name,
       email,

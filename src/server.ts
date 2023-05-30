@@ -17,6 +17,9 @@ console.log(
 // ROTA PARA CRIAÇÂO DE USUÁRIO
 app.use("/create-user", createUserRoutes);
 
+// ROTA LISTAR O USUÁRIO
+app.use("/users", createUserRoutes);
+
 // ROTA PARA A CRIAÇÂO DO PRODUTO
 app.use("/products", createProductsRoutes);
 
