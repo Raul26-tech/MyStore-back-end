@@ -25,3 +25,5 @@ app.use("/create-products", createProductsRoutes);
 
 // LISTANDO PRODUTOS
 app.use("/products", createProductsRoutes);
+
+app.use("/users", createUserRoutes);
